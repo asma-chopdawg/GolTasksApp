@@ -27,14 +27,25 @@ export default function CalculatorApp() {
             case '7':
             case '8':
             case '9':
-            setDisplay(display==='0'?input:display+input)
-            break
+                setDisplay(display==='0'?input:display+input)
+                break
             case '+':
             case '-':
             case '*':
             case '/':
-            setDisplay(operator!==null?display.substring(0,display.length-1))
-            break
+                setDisplay(operator!==null?display.substring(0,display.length-1):display+input)
+                break
+            case ".":
+                let dot=display.slice(-1)
+                setDisplay(dot!=='.'?display+input:display)
+                break
+            case 'CLEAR':
+                setDisplay('0')
+                break
+            case 'DEL':
+                let string=display.toString()
+                let deleteString=string.substring(0,string.length-1)
+                setDisplay(deleteString.length==1?'0':deleteString)
         }
     }
 
